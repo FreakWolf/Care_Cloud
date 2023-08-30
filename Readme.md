@@ -10,5 +10,6 @@ after installing the cli in stall the Expo-Go application from PlayStore/AppStor
 ## How to run the project
 
 go to the directory and run the command
-
+`npm install`
+and then
 `expo start`
