@@ -1,38 +1,35 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image } from 'react-native';
-import * as Font from 'expo-font';
-import { useEffect } from 'react';
-import DNALogo from './assets/images/DNALogo.png'
-export default function App() {
+const Stack = createNativeStackNavigator();
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { useFonts } from 'expo-font';
+import LoadingScreen from './screens/LoadingScreen';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-  useEffect(() => {
-    async function loadFonts() {
-      await Font.loadAsync({
-        'PaytoneOne-Regular': require('./assets/fonts/PaytoneOne-Regular.ttf'),
-      });
-    }
-    loadFonts();
-  }, [])
+const App = () => {
+  const [hideSplashScreen, setHideSplashScreen] = React.useState(true);
+  const [fontsLoaded, error] = useFonts({
+    "PaytoneOne-Regular": require("./assets/fonts/PaytoneOne-Regular.ttf"),
+    "Roboto-Medium": require("./assets/fonts/Roboto-Medium.ttf"),
+  });
+
+  if (!fontsLoaded && !error) {
+    return null;
+  }
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Care Cloud</Text>
-      <Image source={DNALogo} />
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <NavigationContainer>
+        {hideSplashScreen ? (
+          <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen
+              name="LoadingScreen"
+              component={LoadingScreen}
+              options={{ headerShown: false }}
+            />
+          </Stack.Navigator>
+        ) : null}
+      </NavigationContainer>
+    </>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#FFFFFF'
-  },
-  title: {
-    fontFamily: 'PaytoneOne-Regular',
-    fontSize: 48,
-    color: '#7AE284'
-  }
-});
+};
+export default App;
