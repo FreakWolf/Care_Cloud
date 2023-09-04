@@ -14,7 +14,7 @@ const LoadingScreen = () => {
     }, 3000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [navigation]);
 
   const [fontsLoaded] = useFonts({
     PaytoneOneRegular: require('../assets/fonts/PaytoneOne-Regular.ttf'),
@@ -53,13 +53,13 @@ const styles = StyleSheet.create({
   DNAlogo: {
     height: '25.54%',
     width: '28.89%',
-    top: '43.12%',
+    top: '40%',
     right: '0%',
     bottom: '31.33%',
     left: '71.11%',
   },
   careclouds: {
-    top: 435,
+    top: 410,
     left: 39,
     fontSize: 48,
     fontFamily: 'PaytoneOneRegular',
@@ -68,9 +68,9 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   Shinelogo: {
-    height: '22.04%',
+    height: '30%',
     width: '122.47%',
-    top: '43.13%',
+    top: '40%',
     right: '-22.47%',
     bottom: '34.84%',
     left: '0%',

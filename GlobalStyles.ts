@@ -1,14 +1,8 @@
-/* fonts */
-export const FontFamily = {
-  robotoMedium: "Roboto-Medium",
-  robotoRegular: "Roboto-Regular",
-  poiretOne: "PoiretOne-Regular",
-  paytoneOneRegular: "PaytoneOne-Regular",
-};
 /* Colors */
 export const Color = {
   white: "#fff",
   gray_100: "#24252c",
+  gray: "#24252c",
   m3RefNeutralNeutral10: "#1d1b20",
 };
 /* font sizes */

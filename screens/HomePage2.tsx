@@ -1,23 +1,16 @@
 import * as React from "react";
-import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Image } from "expo-image";
-import { Color, FontSize, Border } from "../GlobalStyles";
+import { FontSize, Border, Color } from "../GlobalStyles";
 import { useFonts } from "expo-font";
-import { useNavigation } from "@react-navigation/native";
 
-const HomePage1 = () => {
-
-    const navigation = useNavigation();
-
-    const handleNextButtonPress = () => {
-        navigation.navigate('HomePage2');
-    };
+const HomePage2 = () => {
 
     const [fontsLoaded] = useFonts({
         robotoRegular: require('../assets/fonts/Roboto-Regular.ttf'),
         robotoMedium: require('../assets/fonts/Roboto-Medium.ttf'),
-        poetsenOne: require('../assets/fonts/PoetsenOne-Regular.ttf'),
+        robotoBold: require('../assets/fonts/Roboto-Bold.ttf'),
     });
 
     if (!fontsLoaded) {
@@ -25,136 +18,126 @@ const HomePage1 = () => {
     }
 
     return (
-        <View style={styles.homepage1}>
+        <View style={styles.homepage2}>
             <LinearGradient
-                style={styles.homepage1Child}
+                style={styles.homepage2Child}
                 locations={[0, 1]}
                 colors={["#a8dcd7", "rgba(168, 220, 215, 0)"]}
             />
-            <Text style={[styles.takeCareOf, styles.takeCareOfPosition]}>
-                Take care of your health
-            </Text>
+            <Text style={styles.healthTracking}>Health Tracking</Text>
             <Text
-                style={[styles.preventionIsBetter, styles.takeCareOfPosition]}
-            >{`Prevention is better than cure , take care 
-of your family’s health right now`}</Text>
-            <View style={styles.ellipseParent}>
+                style={[styles.monitorYourVital, styles.nextTypo]}
+            >{`Monitor your vital signs and track your 
+progress over time`}</Text>
+            <View style={[styles.ellipseParent, styles.frameItemLayout]}>
                 <Image
                     style={styles.frameChild}
                     contentFit="cover"
                     source={require("../assets/images/ellipse-1784.png")}
                 />
-                <View style={[styles.frameItem, styles.frameItemPosition]} />
                 <Image
-                    style={styles.image1}
+                    style={[styles.image2, styles.frameItemPosition]}
                     contentFit="cover"
-                    source={require("../assets/images/image1.png")}
+                    source={require("../assets/images/image2.png")}
                 />
+                <View style={[styles.frameItem, styles.frameItemPosition]} />
             </View>
-            <Text style={[styles.skip, styles.skipTypo]}>Skip</Text>
+            <Text style={styles.skip}>Skip</Text>
             <View style={[styles.rectangleParent, styles.groupChildLayout]}>
                 <View style={[styles.groupChild, styles.groupChildLayout]} />
-                <TouchableOpacity onPress={handleNextButtonPress}>
-                    <Text style={[styles.next, styles.skipTypo1]}>Next</Text>
-                </TouchableOpacity>
+                <Text style={[styles.next, styles.nextTypo]}>Next</Text>
             </View>
         </View>
     );
 };
 
 const styles = StyleSheet.create({
-    takeCareOfPosition: {
+    nextTypo: {
+        fontFamily: 'robotoRegular',
+        fontSize: FontSize.size_sm,
         textAlign: "center",
-        color: Color.gray_100,
-        left: "50%",
+        position: "absolute",
+    },
+    frameItemLayout: {
+        width: 299,
         position: "absolute",
     },
     frameItemPosition: {
-        display: "none",
-        position: "absolute",
-    },
-    skipTypo: {
-        fontFamily: 'robotoMedium',
-        fontWeight: "500",
+        left: 0,
+        top: 0,
     },
     groupChildLayout: {
         height: 30,
         width: 84,
         position: "absolute",
     },
-    skipTypo1: {
-        fontSize: FontSize.size_sm,
-        textAlign: "center",
-        position: "absolute",
-    },
-    framePosition: {
-        left: 0,
-        top: 0,
-    },
-    homepage1Child: {
+    homepage2Child: {
         top: 470,
+        left: 1,
         width: 360,
         height: 296,
         backgroundColor: "transparent",
         borderRadius: Border.br_5xs,
-        left: 1,
         position: "absolute",
     },
-    takeCareOf: {
+    healthTracking: {
         marginTop: 120,
-        marginLeft: -136,
-        fontSize: 24,
-        fontFamily: 'poetsenOne',
-        top: "50%",
-    },
-    preventionIsBetter: {
-        marginLeft: -144,
-        top: 550,
-        fontSize: 16,
-        fontFamily: 'robotoRegular',
-    },
-    frameChild: {
-        marginTop: -84.5,
-        marginLeft: -139.5,
-        width: 280,
-        height: 280,
+        marginLeft: -71,
+        fontSize: 20,
+        fontWeight: "700",
+        fontFamily: 'robotoBold',
+        textAlign: "center",
+        color: Color.gray,
         left: "50%",
         top: "50%",
+        position: "absolute",
+    },
+    monitorYourVital: {
+        marginLeft: -120,
+        top: 550,
+        color: Color.gray,
+        fontSize: 16,
+        fontFamily: 'robotoRegular',
+        left: "50%",
+    },
+    frameChild: {
+        marginTop: -104.5,
+        marginLeft: -149.5,
+        width: 300,
+        height: 400,
+        left: "50%",
+        top: "50%",
+        position: "absolute",
+    },
+    image2: {
+        width: 300,
+        height: 411,
         position: "absolute",
     },
     frameItem: {
         borderRadius: 7,
         height: 412,
-        left: 0,
-        top: 0,
+        display: "none",
         width: 299,
-        backgroundColor: Color.white,
-    },
-    image1: {
-        width: 298,
-        height: 378,
-        top: 0,
-        left: 1,
         position: "absolute",
+        backgroundColor: Color.white,
     },
     ellipseParent: {
         marginLeft: -149,
         top: 80,
         height: 365,
-        width: 299,
         left: "50%",
-        position: "absolute",
         overflow: "hidden",
     },
     skip: {
         top: 25,
         left: 300,
+        fontWeight: "500",
+        fontFamily: 'robotoMedium',
         fontSize: FontSize.size_sm,
         textAlign: "center",
+        color: Color.gray,
         position: "absolute",
-        fontFamily: 'robotoMedium',
-        color: Color.gray_100,
-        fontWeight: "500",
     },
     groupChild: {
         backgroundColor: "#199a8e",
@@ -172,20 +155,7 @@ const styles = StyleSheet.create({
         top: 650,
         left: 250,
     },
-    time: {
-        fontSize: 12,
-        letterSpacing: 0.1,
-        lineHeight: 17,
-        color: "#000",
-        textAlign: "left",
-        zIndex: 0,
-    },
-    rightIcons: {
-        width: 40,
-        height: 15,
-        zIndex: 1,
-    },
-    homepage1: {
+    homepage2: {
         borderRadius: 20,
         flex: 1,
         width: "100%",
@@ -195,4 +165,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default HomePage1;
+export default HomePage2;
