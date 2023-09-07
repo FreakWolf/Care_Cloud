@@ -6,12 +6,12 @@ import { Color, FontSize, Border } from "../GlobalStyles";
 import { useFonts } from "expo-font";
 import { useNavigation } from "@react-navigation/native";
 
-const HomePage1 = () => {
+const HomePage3 = () => {
 
     const navigation = useNavigation();
 
     const handleNextButtonPress = () => {
-        navigation.navigate('HomePage2');
+        navigation.navigate('LoginandSignup');
     };
 
     const handleSkipButtonPress = () => {
@@ -21,7 +21,7 @@ const HomePage1 = () => {
     const [fontsLoaded] = useFonts({
         robotoRegular: require('../assets/fonts/Roboto-Regular.ttf'),
         robotoMedium: require('../assets/fonts/Roboto-Medium.ttf'),
-        poetsenOne: require('../assets/fonts/PoetsenOne-Regular.ttf'),
+        robotoBold: require('../assets/fonts/Roboto-Bold.ttf'),
     });
 
     if (!fontsLoaded) {
@@ -29,9 +29,9 @@ const HomePage1 = () => {
     }
 
     return (
-        <View style={styles.homepage1}>
+        <View style={styles.homepage3}>
             <LinearGradient
-                style={styles.homepage1Child}
+                style={styles.homepage3Child}
                 locations={[0, 1]}
                 colors={["#a8dcd7", "rgba(168, 220, 215, 0)"]}
             />
@@ -50,9 +50,9 @@ of your family’s health right now`}</Text>
                 />
                 <View style={[styles.frameItem, styles.frameItemPosition]} />
                 <Image
-                    style={styles.image1}
+                    style={[styles.image3, styles.framePosition]}
                     contentFit="cover"
-                    source={require("../assets/images/image1.png")}
+                    source={require("../assets/images/image3.png")}
                 />
             </View>
             <TouchableOpacity onPress={handleSkipButtonPress}>
@@ -79,9 +79,19 @@ const styles = StyleSheet.create({
         display: "none",
         position: "absolute",
     },
+    framePosition: {
+        left: 0,
+        top: 0,
+    },
     skipTypo: {
-        fontFamily: 'robotoMedium',
+        top: 25,
+        left: 300,
         fontWeight: "500",
+        fontFamily: 'robotoMedium',
+        fontSize: FontSize.size_sm,
+        textAlign: "center",
+        color: Color.gray,
+        position: "absolute",
     },
     groupChildLayout: {
         height: 30,
@@ -89,28 +99,26 @@ const styles = StyleSheet.create({
         position: "absolute",
     },
     skipTypo1: {
+        fontFamily: 'robotoRegular',
         fontSize: FontSize.size_sm,
         textAlign: "center",
         position: "absolute",
     },
-    framePosition: {
-        left: 0,
-        top: 0,
-    },
-    homepage1Child: {
+    homepage3Child: {
         top: 470,
+        left: 1,
         width: 360,
         height: 296,
         backgroundColor: "transparent",
         borderRadius: Border.br_5xs,
-        left: 1,
         position: "absolute",
     },
     takeCareOf: {
         marginTop: 120,
-        marginLeft: -136,
+        marginLeft: -130,
         fontSize: 24,
-        fontFamily: 'poetsenOne',
+        fontWeight: "700",
+        fontFamily: 'robotoBold',
         top: "50%",
     },
     preventionIsBetter: {
@@ -120,10 +128,10 @@ const styles = StyleSheet.create({
         fontFamily: 'robotoRegular',
     },
     frameChild: {
-        marginTop: -84.5,
-        marginLeft: -139.5,
-        width: 280,
-        height: 280,
+        marginTop: -97.5,
+        marginLeft: -140.5,
+        width: 266,
+        height: 266,
         left: "50%",
         top: "50%",
         position: "absolute",
@@ -136,11 +144,9 @@ const styles = StyleSheet.create({
         width: 299,
         backgroundColor: Color.white,
     },
-    image1: {
-        width: 298,
-        height: 378,
-        top: 0,
-        left: 1,
+    image3: {
+        width: 300,
+        height: 400,
         position: "absolute",
     },
     ellipseParent: {
@@ -158,8 +164,8 @@ const styles = StyleSheet.create({
         fontSize: FontSize.size_sm,
         textAlign: "center",
         position: "absolute",
-        fontFamily: 'robotoMedium',
         color: Color.gray_100,
+        fontFamily: 'robotoMedium',
         fontWeight: "500",
     },
     groupChild: {
@@ -178,20 +184,7 @@ const styles = StyleSheet.create({
         top: 650,
         left: 250,
     },
-    time: {
-        fontSize: 12,
-        letterSpacing: 0.1,
-        lineHeight: 17,
-        color: "#000",
-        textAlign: "left",
-        zIndex: 0,
-    },
-    rightIcons: {
-        width: 40,
-        height: 15,
-        zIndex: 1,
-    },
-    homepage1: {
+    homepage3: {
         borderRadius: 20,
         flex: 1,
         width: "100%",
@@ -201,4 +194,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default HomePage1;
+export default HomePage3;

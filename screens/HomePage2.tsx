@@ -1,11 +1,22 @@
 import * as React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Image } from "expo-image";
 import { FontSize, Border, Color } from "../GlobalStyles";
 import { useFonts } from "expo-font";
+import { useNavigation } from "@react-navigation/native";
 
 const HomePage2 = () => {
+
+    const navigation = useNavigation();
+
+    const handleNextButtonPress = () => {
+        navigation.navigate('HomePage3');
+    };
+
+    const handleSkipButtonPress = () => {
+        navigation.navigate('LoginandSignup');
+    };
 
     const [fontsLoaded] = useFonts({
         robotoRegular: require('../assets/fonts/Roboto-Regular.ttf'),
@@ -42,11 +53,15 @@ progress over time`}</Text>
                 />
                 <View style={[styles.frameItem, styles.frameItemPosition]} />
             </View>
-            <Text style={styles.skip}>Skip</Text>
-            <View style={[styles.rectangleParent, styles.groupChildLayout]}>
-                <View style={[styles.groupChild, styles.groupChildLayout]} />
-                <Text style={[styles.next, styles.nextTypo]}>Next</Text>
-            </View>
+            <TouchableOpacity onPress={handleSkipButtonPress}>
+                <Text style={styles.skip}>Skip</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={handleNextButtonPress}>
+                <View style={[styles.rectangleParent, styles.groupChildLayout]}>
+                    <View style={[styles.groupChild, styles.groupChildLayout]} />
+                    <Text style={[styles.next, styles.nextTypo]}>Next</Text>
+                </View>
+            </TouchableOpacity>
         </View>
     );
 };
