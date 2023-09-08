@@ -1,10 +1,17 @@
 import * as React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import { Image } from "expo-image";
 import { Border, FontSize, Color } from "../GlobalStyles";
 import { useFonts } from "expo-font";
+import { useNavigation } from "@react-navigation/native";
 
 const SignupPage = () => {
+
+    const navigation = useNavigation();
+
+    const handleLoginButtonPress = () => {
+        navigation.navigate('LoginPage');
+    };
 
     const [fontsLoaded] = useFonts({
         robotoRegular: require('../assets/fonts/Roboto-Regular.ttf'),
@@ -23,7 +30,9 @@ const SignupPage = () => {
             <View style={styles.rectangleParent}>
                 <View style={[styles.groupChild, styles.groupLayout2]} />
                 <View style={[styles.groupItem, styles.groupLayout2]} />
-                <Text style={[styles.login, styles.loginTypo]}>Login</Text>
+                <TouchableOpacity onPress={handleLoginButtonPress}>
+                    <Text style={[styles.login, styles.loginTypo]}>Login</Text>
+                </TouchableOpacity>
                 <Text style={[styles.signup, styles.loginTypo]}>Signup</Text>
             </View>
             <View style={[styles.androidLarge66Child, styles.androidLayout]} />
@@ -35,10 +44,12 @@ const SignupPage = () => {
                 contentFit="cover"
                 source={require("../assets/group-1171275853.png")}
             /> */}
-            <Text style={[styles.alreadyHaveAnContainer, styles.orTypo]}>
-                <Text style={styles.alreadyHaveAn}>Already have an account/</Text>
-                <Text style={styles.login1}> Login</Text>
-            </Text>
+            <TouchableOpacity onPress={handleLoginButtonPress}>
+                <Text style={[styles.alreadyHaveAnContainer, styles.orTypo]}>
+                    <Text style={styles.alreadyHaveAn}>Already have an account/</Text>
+                    <Text style={styles.login1}> Login</Text>
+                </Text>
+            </TouchableOpacity>
             <View style={[styles.rectangleGroup, styles.groupLayout1]}>
                 <View style={[styles.groupInner, styles.groupLayout1]} />
                 <Text style={[styles.firstName, styles.orTypo]}>First Name</Text>

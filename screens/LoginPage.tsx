@@ -1,10 +1,18 @@
 import * as React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import { Image } from "expo-image";
 import { Border, Color, FontSize } from "../GlobalStyles";
 import { useFonts } from "expo-font";
+import { useNavigation } from "@react-navigation/native";
 
 const LoginPage = () => {
+
+    const navigation = useNavigation();
+
+
+    const handleSignupButtonPress = () => {
+        navigation.navigate('SignupPage');
+    };
 
     const [fontsLoaded] = useFonts({
         robotoRegular: require('../assets/fonts/Roboto-Regular.ttf'),
@@ -24,7 +32,9 @@ const LoginPage = () => {
                 <View style={[styles.groupChild, styles.groupLayout1]} />
                 <View style={[styles.groupItem, styles.itemBorder]} />
                 <Text style={[styles.login, styles.loginTypo]}>Login</Text>
-                <Text style={styles.signup}>Signup</Text>
+                <TouchableOpacity onPress={handleSignupButtonPress}>
+                    <Text style={styles.signup}>Signup</Text>
+                </TouchableOpacity>
             </View>
             <Text style={[styles.emailAddress, styles.orTypo]}>
                 Email Address / Mobile No
@@ -54,10 +64,12 @@ const LoginPage = () => {
                 contentFit="cover"
                 source={require("../assets/group-1171275853.png")}
             /> */}
-            <Text style={[styles.newToCarecloudssignContainer, styles.orPosition]}>
-                <Text style={styles.newToCareclouds}>New to CareClouds/</Text>
-                <Text style={styles.signUp}>Sign Up</Text>
-            </Text>
+            <TouchableOpacity onPress={handleSignupButtonPress}>
+                <Text style={[styles.newToCarecloudssignContainer, styles.orPosition]}>
+                    <Text style={styles.newToCareclouds}>New to CareClouds/</Text>
+                    <Text style={styles.signUp}>Sign Up</Text>
+                </Text>
+            </TouchableOpacity>
             <Image
                 style={[styles.freepikDnaInject443Icon, styles.freepikIconLayout]}
                 contentFit="cover"
