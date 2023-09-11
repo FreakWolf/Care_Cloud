@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
         top: 0,
     },
     homepage1Child: {
-        top: 470,
+        top: 510,
         width: 360,
         height: 296,
         backgroundColor: "transparent",
@@ -111,11 +111,11 @@ const styles = StyleSheet.create({
         marginLeft: -136,
         fontSize: 24,
         fontFamily: 'poetsenOne',
-        top: "50%",
+        top: "52%",
     },
     preventionIsBetter: {
         marginLeft: -144,
-        top: 550,
+        top: 580,
         fontSize: 16,
         fontFamily: 'robotoRegular',
     },
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
     },
     ellipseParent: {
         marginLeft: -149,
-        top: 80,
+        top: 120,
         height: 365,
         width: 299,
         left: "50%",
@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
         overflow: "hidden",
     },
     skip: {
-        top: 25,
+        top: 50,
         left: 300,
         fontSize: FontSize.size_sm,
         textAlign: "center",

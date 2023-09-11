@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
         top: 0,
     },
     skipTypo: {
-        top: 25,
+        top: 50,
         left: 300,
         fontWeight: "500",
         fontFamily: 'robotoMedium',
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
         position: "absolute",
     },
     homepage3Child: {
-        top: 470,
+        top: 510,
         left: 1,
         width: 360,
         height: 296,
@@ -119,11 +119,11 @@ const styles = StyleSheet.create({
         fontSize: 24,
         fontWeight: "700",
         fontFamily: 'robotoBold',
-        top: "50%",
+        top: "52%",
     },
     preventionIsBetter: {
         marginLeft: -144,
-        top: 550,
+        top: 580,
         fontSize: 16,
         fontFamily: 'robotoRegular',
     },
@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
     },
     ellipseParent: {
         marginLeft: -149,
-        top: 80,
+        top: 120,
         height: 365,
         width: 299,
         left: "50%",
@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
         overflow: "hidden",
     },
     skip: {
-        top: 25,
+        top: 50,
         left: 300,
         fontSize: FontSize.size_sm,
         textAlign: "center",
