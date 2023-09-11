@@ -2,7 +2,7 @@ import * as React from "react";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Image } from "expo-image";
-import { FontSize, Border, Color } from "../GlobalStyles";
+import { FontSize, Border, Color } from "../../GlobalStyles";
 import { useFonts } from "expo-font";
 import { useNavigation } from "@react-navigation/native";
 
@@ -19,9 +19,9 @@ const HomePage2 = () => {
     };
 
     const [fontsLoaded] = useFonts({
-        robotoRegular: require('../assets/fonts/Roboto-Regular.ttf'),
-        robotoMedium: require('../assets/fonts/Roboto-Medium.ttf'),
-        robotoBold: require('../assets/fonts/Roboto-Bold.ttf'),
+        robotoRegular: require('../../assets/fonts/Roboto-Regular.ttf'),
+        robotoMedium: require('../../assets/fonts/Roboto-Medium.ttf'),
+        robotoBold: require('../../assets/fonts/Roboto-Bold.ttf'),
     });
 
     if (!fontsLoaded) {
@@ -44,12 +44,12 @@ progress over time`}</Text>
                 <Image
                     style={styles.frameChild}
                     contentFit="cover"
-                    source={require("../assets/images/ellipse-1784.png")}
+                    source={require("../../assets/images/ellipse-1784.png")}
                 />
                 <Image
                     style={[styles.image2, styles.frameItemPosition]}
                     contentFit="cover"
-                    source={require("../assets/images/image2.png")}
+                    source={require("../../assets/images/image2.png")}
                 />
                 <View style={[styles.frameItem, styles.frameItemPosition]} />
             </View>

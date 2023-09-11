@@ -15,6 +15,10 @@ const LoginPage = () => {
         navigation.navigate('SignupPage');
     };
 
+    const handleForgotpassPress = () => {
+        navigation.navigate('ForgotPassEmail');
+    };
+
     const [fontsLoaded] = useFonts({
         robotoRegular: require('../assets/fonts/Roboto-Regular.ttf'),
         robotoMedium: require('../assets/fonts/Roboto-Medium.ttf'),
@@ -54,7 +58,9 @@ const LoginPage = () => {
                 Enter your Password
             </Text>
             <View style={[styles.loginpageItem, styles.groupLayout]} />
-            <Text style={styles.forgotPassword}>Forgot password ?</Text>
+            <TouchableOpacity onPress={handleForgotpassPress}>
+                <Text style={styles.forgotPassword}>Forgot password ?</Text>
+            </TouchableOpacity>
             {/* <Text style={styles.enterPassword}>Enter password</Text> */}
             <TextInput
                 style={styles.enterPassword}
@@ -242,7 +248,7 @@ const styles = StyleSheet.create({
         left: 20,
     },
     forgotPassword: {
-        top: 503,
+        top: 475,
         left: 241,
         textAlign: "right",
         fontSize: FontSize.size_xs,

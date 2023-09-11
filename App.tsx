@@ -2,13 +2,15 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from 'react-native-screens/native-stack';
 
-import LoadingScreen from './screens/LoadingScreen';
-import HomePage1 from './screens/HomePage1';
-import HomePage2 from './screens/HomePage2';
-import HomePage3 from './screens/HomePage3';
+import LoadingScreen from './screens/home/LoadingScreen';
+import HomePage1 from './screens/home/HomePage1';
+import HomePage2 from './screens/home/HomePage2';
+import HomePage3 from './screens/home/HomePage3';
 import LoginandSignup from './screens/Login&Signup';
 import LoginPage from './screens/LoginPage';
 import SignupPage from './screens/SignupPage';
+import ForgotPassEmail from './screens/forgot/ForgotPassEmail';
+import ForgotPassMobile from './screens/forgot/ForgotPassMobile';
 
 const Stack = createNativeStackNavigator();
 
@@ -49,6 +51,16 @@ const App = () => {
         <Stack.Screen
           name="SignupPage"
           component={SignupPage}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="ForgotPassEmail"
+          component={ForgotPassEmail}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="ForgotPassMobile"
+          component={ForgotPassMobile}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

@@ -17,7 +17,7 @@ const LoadingScreen = () => {
   }, [navigation]);
 
   const [fontsLoaded] = useFonts({
-    PaytoneOneRegular: require('../assets/fonts/PaytoneOne-Regular.ttf'),
+    PaytoneOneRegular: require('../../assets/fonts/PaytoneOne-Regular.ttf'),
   });
 
   if (!fontsLoaded) {
@@ -29,12 +29,12 @@ const LoadingScreen = () => {
       <View style={styles.loadingscreen}>
         <Image
           style={[styles.DNAlogo, styles.IconLayout]}
-          source={require('../assets/images/DNALogo.png')}
+          source={require('../../assets/images/DNALogo.png')}
         />
         <Text style={styles.careclouds}>Care Clouds</Text>
         <Image
           style={[styles.Shinelogo, styles.IconLayout]}
-          source={require('../assets/images/Shine.png')}
+          source={require('../../assets/images/Shine.png')}
         />
       </View>
     );
