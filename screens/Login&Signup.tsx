@@ -145,9 +145,6 @@ const styles = StyleSheet.create({
   signupChild: {
     right: 22,
   },
-  loginItem: {
-    left: 187,
-  },
   login: {
     left: 80,
   },

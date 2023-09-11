@@ -76,13 +76,13 @@ const SignupPage = () => {
                 <View style={[styles.groupChild2, styles.lineViewPosition]} />
             </View>
             <Image
-                style={[styles.freepikDnaInject443Icon, styles.iconLayout]}
+                style={[styles.DNAlogo, styles.iconLayout]}
                 contentFit="cover"
                 source={require("../assets/images/DNALogo.png")}
             />
             <Text style={styles.careclouds}>CareClouds</Text>
             <Image
-                style={[styles.freepikSparklesInject42Icon, styles.iconLayout]}
+                style={[styles.Shinelogo, styles.iconLayout]}
                 contentFit="cover"
                 source={require("../assets/images/Shine.png")}
             />
@@ -151,10 +151,6 @@ const styles = StyleSheet.create({
         top: 11,
         borderStyle: "solid",
         position: "absolute",
-    },
-    rectangleParent1Position: {
-        top: 0,
-        left: 0,
     },
     iconLayout: {
         maxHeight: "100%",
@@ -291,43 +287,8 @@ const styles = StyleSheet.create({
         width: 320,
         position: "absolute",
     },
-    time: {
-        fontSize: 12,
-        letterSpacing: 0.1,
-        lineHeight: 17,
-        fontWeight: "500",
-        fontFamily: 'robotoMedium',
-        color: "#000",
-        zIndex: 0,
-        textAlign: "left",
-    },
-    rightIcons: {
-        width: 40,
-        height: 15,
-        zIndex: 1,
-    },
-    cameraCutoutIcon: {
-        marginLeft: -10.48,
-        top: 16,
-        width: 21,
-        height: 21,
-        display: "none",
-        zIndex: 2,
-        left: "50%",
-        position: "absolute",
-    },
-    devicedeviceFrameComponents: {
-        right: 0,
-        height: 45,
-        flexDirection: "row",
-        paddingHorizontal: 21,
-        paddingVertical: 9,
-        alignItems: "flex-end",
-        justifyContent: "space-between",
-        left: 0,
-        position: "absolute",
-    },
-    freepikDnaInject443Icon: {
+    
+    DNAlogo: {
         height: "25.31%",
         width: "37.5%",
         top: "3.75%",
@@ -344,7 +305,7 @@ const styles = StyleSheet.create({
         textAlign: "left",
         position: "absolute",
     },
-    freepikSparklesInject42Icon: {
+    Shinelogo: {
         height: "21.91%",
         width: "121.73%",
         top: "5.29%",
