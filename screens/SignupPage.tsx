@@ -1,5 +1,5 @@
 import * as React from "react";
-import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity, TextInput } from "react-native";
 import { Image } from "expo-image";
 import { Border, FontSize, Color } from "../GlobalStyles";
 import { useFonts } from "expo-font";
@@ -8,6 +8,9 @@ import { useNavigation } from "@react-navigation/native";
 const SignupPage = () => {
 
     const navigation = useNavigation();
+    const [email, setEmail] = React.useState("");
+    const [phone, setPhone] = React.useState("");
+    const [password, setPassword] = React.useState("");
 
     const handleLoginButtonPress = () => {
         navigation.navigate('LoginPage');
@@ -52,24 +55,48 @@ const SignupPage = () => {
             </TouchableOpacity>
             <View style={[styles.rectangleGroup, styles.groupLayout1]}>
                 <View style={[styles.groupInner, styles.groupLayout1]} />
-                <Text style={[styles.firstName, styles.orTypo]}>First Name</Text>
+                {/* <Text style={[styles.firstName, styles.orTypo]}>First Name</Text> */}
+                <TextInput
+                    style={[styles.firstName, styles.orTypo]}
+                    placeholder="First Name"
+                />
             </View>
             <View style={[styles.rectangleContainer, styles.groupLayout1]}>
                 <View style={[styles.groupInner, styles.groupLayout1]} />
-                <Text style={[styles.firstName, styles.orTypo]}>Last Name</Text>
+                {/* <Text style={[styles.firstName, styles.orTypo]}>Last Name</Text> */}
+                <TextInput
+                    style={[styles.firstName, styles.orTypo]}
+                    placeholder="Last Name"
+                />
             </View>
-            <Text style={[styles.enterYourEmail, styles.enterTypo]}>
-                Enter Your Email address
-            </Text>
-            <Text style={[styles.enterYourMobile, styles.enterTypo]}>
-                Enter Your Mobile number
-            </Text>
-            <Text style={[styles.enterYourPassword, styles.enterTypo]}>
-                Enter Your Password
-            </Text>
-            <Text style={[styles.confirmYoursPassword, styles.enterTypo]}>
-                Confirm Yours Password
-            </Text>
+            <TextInput style={[styles.enterYourEmail, styles.enterTypo]}
+                placeholder="Enter Your Email address"
+                value={email}
+                onChangeText={setEmail}
+            >
+            </TextInput>
+            <TextInput style={[styles.enterYourMobile, styles.enterTypo]}
+                placeholder="Enter Your Mobile number"
+                value={phone}
+                onChangeText={setPhone}
+            >
+            </TextInput>
+            <TextInput style={[styles.enterYourPassword, styles.enterTypo]}
+                placeholder="Enter Your Password"
+                value={password}
+                onChangeText={setPassword}
+            >
+            </TextInput>
+            <TextInput style={[styles.confirmYoursPassword, styles.enterTypo]}
+                placeholder="Confirm Yours Password"
+                value={password}
+                onChangeText={setPassword}
+            >
+            </TextInput>
+            <View style={[styles.rectangleGroup2, styles.groupLayout3]}>
+                <View style={[styles.groupInner1, styles.groupLayout3]} />
+                <Text style={[styles.SignUp, styles.SignUpTypo]}>Sign Up</Text>
+            </View>
             <View style={styles.orParent}>
                 <Text style={[styles.or, styles.orTypo]}>OR</Text>
                 <View style={[styles.lineView, styles.lineViewPosition]} />
@@ -174,6 +201,13 @@ const styles = StyleSheet.create({
         left: 165,
         backgroundColor: Color.colorDarkcyan,
     },
+    groupInner1: {
+        borderRadius: Border.br_5xs,
+        height: 40,
+        backgroundColor: Color.colorDarkcyan,
+        left: 0,
+        top: 0,
+    },
     login: {
         left: 57,
         textAlign: "center",
@@ -183,6 +217,16 @@ const styles = StyleSheet.create({
         left: 218,
         color: Color.white,
         textAlign: "left",
+    },
+    SignUp: {
+        top: 12,
+        fontWeight: "700",
+        fontFamily: "robotoBold",
+        textAlign: "center",
+    },
+    SignUpTypo: {
+        color: Color.white,
+        fontSize: FontSize.size_sm,
     },
     rectangleParent: {
         top: 237,
@@ -218,7 +262,7 @@ const styles = StyleSheet.create({
     },
     alreadyHaveAnContainer: {
         marginLeft: -92,
-        top: 700,
+        top: 740,
         fontSize: FontSize.size_xs,
         fontFamily: 'robotoRegular',
         left: "50%",
@@ -233,8 +277,9 @@ const styles = StyleSheet.create({
         backgroundColor: Color.white,
     },
     firstName: {
-        top: 12,
+        top: 7,
         left: 12,
+        width: 130,
         color: Color.gray_100,
         fontSize: FontSize.size_xs,
         fontFamily: 'robotoRegular',
@@ -244,22 +289,30 @@ const styles = StyleSheet.create({
         width: 148,
         left: 20,
     },
+    rectangleGroup2: {
+        top: 590,
+        left: 20,
+    },
     rectangleContainer: {
         left: 192,
         top: 313,
         width: 148,
     },
     enterYourEmail: {
-        top: 378,
+        top: 373,
+        width: 285,
     },
     enterYourMobile: {
-        top: 435,
+        top: 430,
+        width: 285,
     },
     enterYourPassword: {
-        top: 491,
+        top: 485,
+        width: 285,
     },
     confirmYoursPassword: {
-        top: 547,
+        top: 540,
+        width: 285,
     },
     or: {
         marginLeft: -8,
@@ -281,13 +334,17 @@ const styles = StyleSheet.create({
     },
     orParent: {
         marginLeft: -160,
-        top: 597,
+        top: 650,
         height: 22,
         left: "50%",
         width: 320,
         position: "absolute",
     },
-    
+    groupLayout3: {
+        height: 40,
+        width: 320,
+        position: "absolute",
+    },
     DNAlogo: {
         height: "25.31%",
         width: "37.5%",
