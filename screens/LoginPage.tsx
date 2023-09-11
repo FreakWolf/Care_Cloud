@@ -1,5 +1,5 @@
 import * as React from "react";
-import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity, TextInput } from "react-native";
 import { Image } from "expo-image";
 import { Border, Color, FontSize } from "../GlobalStyles";
 import { useFonts } from "expo-font";
@@ -8,7 +8,8 @@ import { useNavigation } from "@react-navigation/native";
 const LoginPage = () => {
 
     const navigation = useNavigation();
-
+    const [email, setEmail] = React.useState("");
+    const [password, setPassword] = React.useState("");
 
     const handleSignupButtonPress = () => {
         navigation.navigate('SignupPage');
@@ -41,15 +42,27 @@ const LoginPage = () => {
             </Text>
             <View style={[styles.loginpageChild, styles.groupLayout]} />
             <Text style={[styles.verify, styles.verifyPosition]}>Verify</Text>
-            <Text style={[styles.emailAddress1, styles.verifyPosition]}>
+            {/* <Text style={[styles.emailAddress1, styles.verifyPosition]}>
                 Email Address / Mobile No
-            </Text>
+            </Text> */}
+            <TextInput
+                style={styles.emailAddress1}
+                placeholder="Email Address / Mobile No"
+                value={email}
+                onChangeText={setEmail} />
             <Text style={[styles.enterYourPassword, styles.orPosition]}>
                 Enter your Password
             </Text>
             <View style={[styles.loginpageItem, styles.groupLayout]} />
             <Text style={styles.forgotPassword}>Forgot password ?</Text>
-            <Text style={styles.enterPassword}>Enter password</Text>
+            {/* <Text style={styles.enterPassword}>Enter password</Text> */}
+            <TextInput
+                style={styles.enterPassword}
+                placeholder="Enter password"
+                secureTextEntry={true}
+                value={password}
+                onChangeText={setPassword}
+            />
             <View style={[styles.rectangleGroup, styles.groupLayout]}>
                 <View style={[styles.groupInner, styles.groupLayout]} />
                 <Text style={[styles.logIn, styles.loginTypo]}>Log In</Text>
@@ -71,13 +84,13 @@ const LoginPage = () => {
                 </Text>
             </TouchableOpacity>
             <Image
-                style={[styles.freepikDnaInject443Icon, styles.freepikIconLayout]}
+                style={[styles.DNAlogo, styles.IconLayout]}
                 contentFit="cover"
                 source={require("../assets/images/DNALogo.png")}
             />
             <Text style={styles.careclouds}>CareClouds</Text>
             <Image
-                style={[styles.freepikSparklesInject42Icon, styles.freepikIconLayout]}
+                style={[styles.Shinelogo, styles.IconLayout]}
                 contentFit="cover"
                 source={require("../assets/images/Shine.png")}
             />
@@ -86,6 +99,7 @@ const LoginPage = () => {
 };
 
 const styles = StyleSheet.create({
+
     groupLayout1: {
         width: 150,
         top: 0,
@@ -137,7 +151,7 @@ const styles = StyleSheet.create({
         borderStyle: "solid",
         position: "absolute",
     },
-    freepikIconLayout: {
+    IconLayout: {
         maxHeight: "100%",
         maxWidth: "100%",
         position: "absolute",
@@ -200,7 +214,9 @@ const styles = StyleSheet.create({
         textAlign: "center",
     },
     emailAddress1: {
-        left: 24,
+        top: 375,
+        left: 30,
+        width: 275,
         fontSize: FontSize.size_xs,
         textAlign: "left",
     },
@@ -235,8 +251,9 @@ const styles = StyleSheet.create({
         position: "absolute",
     },
     enterPassword: {
-        top: 467,
+        top: 460,
         left: 28,
+        width: 275,
         fontSize: FontSize.size_xs,
         color: Color.gray_100,
         textAlign: "left",
@@ -301,12 +318,12 @@ const styles = StyleSheet.create({
     },
     newToCarecloudssignContainer: {
         marginLeft: -77,
-        top: 710,
+        top: 680,
         fontFamily: 'dMSansRegular',
         fontSize: FontSize.size_xs,
         textAlign: "center",
     },
-    freepikDnaInject443Icon: {
+    DNAlogo: {
         height: "25.31%",
         width: "37.5%",
         top: "3.75%",
@@ -323,48 +340,13 @@ const styles = StyleSheet.create({
         textAlign: "left",
         position: "absolute",
     },
-    freepikSparklesInject42Icon: {
+    Shinelogo: {
         height: "21.91%",
         width: "121.73%",
         top: "5.29%",
         right: "-21.73%",
         bottom: "72.79%",
         left: "0%",
-    },
-    time: {
-        fontSize: 12,
-        letterSpacing: 0.1,
-        lineHeight: 17,
-        fontWeight: "500",
-        fontFamily: 'robotoMedium',
-        color: "#000",
-        zIndex: 0,
-        textAlign: "left",
-    },
-    rightIcons: {
-        width: 40,
-        height: 15,
-        zIndex: 1,
-    },
-    cameraCutoutIcon: {
-        marginLeft: -10.48,
-        top: 16,
-        width: 21,
-        height: 21,
-        display: "none",
-        zIndex: 2,
-    },
-    devicedeviceFrameComponents: {
-        right: 0,
-        height: 45,
-        flexDirection: "row",
-        paddingHorizontal: 21,
-        paddingVertical: 9,
-        alignItems: "flex-end",
-        justifyContent: "space-between",
-        left: 0,
-        top: 0,
-        position: "absolute",
     },
     loginpage: {
         flex: 1,
