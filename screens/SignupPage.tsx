@@ -3,7 +3,26 @@ import { StyleSheet, View, Text, TouchableOpacity, TextInput } from "react-nativ
 import { Image } from "expo-image";
 import { Border, FontSize, Color } from "../GlobalStyles";
 import { useFonts } from "expo-font";
+import * as firebase from 'firebase/app';
+import { initializeApp } from 'firebase/app';
+import { doc, getFirestore, setDoc } from 'firebase/firestore';
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { useNavigation } from "@react-navigation/native";
+
+const firebaseConfig = {
+    // Your Firebase config here
+    apiKey: "AIzaSyB7aERNxKXqjVVOqpoMfo6e7XzFCu47yP0",
+    authDomain: "carecloud-73170.firebaseapp.com",
+    projectId: "carecloud-73170",
+    storageBucket: "carecloud-73170.appspot.com",
+    messagingSenderId: "433095841748",
+    appId: "1:433095841748:web:903e6a8e1620c8e3032841",
+    measurementId: "G-V62DW9324H"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app);
 
 const SignupPage = () => {
 
@@ -11,10 +30,34 @@ const SignupPage = () => {
     const [email, setEmail] = React.useState("");
     const [phone, setPhone] = React.useState("");
     const [password, setPassword] = React.useState("");
+    const [firstName, setFirstName] = React.useState("");
+    const [lastName, setLastName] = React.useState("");
 
     const handleLoginButtonPress = () => {
         navigation.navigate('LoginPage');
     };
+
+    const handleSignup = async () => {
+        try {
+            // Create user with email and password
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+
+            // Save additional user data in Firestore
+            await setDoc(doc(db, 'users', user.uid), {
+                email,
+                phone,
+                firstName,
+                lastName,
+            });
+
+            // Redirect to login page
+            navigation.navigate('LoginPage');
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
 
     const [fontsLoaded] = useFonts({
         robotoRegular: require('../assets/fonts/Roboto-Regular.ttf'),
@@ -59,6 +102,8 @@ const SignupPage = () => {
                 <TextInput
                     style={[styles.firstName, styles.orTypo]}
                     placeholder="First Name"
+                    value={firstName}
+                    onChangeText={setFirstName}
                 />
             </View>
             <View style={[styles.rectangleContainer, styles.groupLayout1]}>
@@ -67,6 +112,8 @@ const SignupPage = () => {
                 <TextInput
                     style={[styles.firstName, styles.orTypo]}
                     placeholder="Last Name"
+                    value={lastName}
+                    onChangeText={setLastName}
                 />
             </View>
             <TextInput style={[styles.enterYourEmail, styles.enterTypo]}
@@ -93,10 +140,12 @@ const SignupPage = () => {
                 onChangeText={setPassword}
             >
             </TextInput>
-            <View style={[styles.rectangleGroup2, styles.groupLayout3]}>
-                <View style={[styles.groupInner1, styles.groupLayout3]} />
-                <Text style={[styles.SignUp, styles.SignUpTypo]}>Sign Up</Text>
-            </View>
+            <TouchableOpacity onPress={handleSignup}>
+                <View style={[styles.rectangleGroup2, styles.groupLayout3]}>
+                    <View style={[styles.groupInner1, styles.groupLayout3]} />
+                    <Text style={[styles.SignUp, styles.SignUpTypo]}>Sign Up</Text>
+                </View>
+            </TouchableOpacity>
             <View style={styles.orParent}>
                 <Text style={[styles.or, styles.orTypo]}>OR</Text>
                 <View style={[styles.lineView, styles.lineViewPosition]} />
