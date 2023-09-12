@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Text, StyleSheet, View, TextInput, TouchableOpacity } from "react-native";
-import { Image } from "expo-image";
 import { FontSize, Color, Border } from "../../GlobalStyles";
 import { useFonts } from "expo-font";
 import { useNavigation } from "@react-navigation/native";
@@ -46,10 +45,6 @@ will send you confirmation code `}</Text>
       <View style={[styles.rectangleParent, styles.childLayout]}>
         <View style={[styles.groupChild, styles.groupChildPosition]} />
         <Text style={styles.sendCode}>Send code</Text>
-      </View>
-      <View
-        style={[styles.devicedeviceFrameComponents, styles.groupChildPosition]}
-      >
       </View>
     </View>
   );

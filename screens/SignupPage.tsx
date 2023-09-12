@@ -3,33 +3,23 @@ import { StyleSheet, View, Text, TouchableOpacity, TextInput } from "react-nativ
 import { Image } from "expo-image";
 import { Border, FontSize, Color } from "../GlobalStyles";
 import { useFonts } from "expo-font";
-import * as firebase from 'firebase/app';
+import firebaseConfig from "./firebase";
 import { initializeApp } from 'firebase/app';
 import { doc, getFirestore, setDoc } from 'firebase/firestore';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { useNavigation } from "@react-navigation/native";
 
-const firebaseConfig = {
-    // Your Firebase config here
-    apiKey: "AIzaSyB7aERNxKXqjVVOqpoMfo6e7XzFCu47yP0",
-    authDomain: "carecloud-73170.firebaseapp.com",
-    projectId: "carecloud-73170",
-    storageBucket: "carecloud-73170.appspot.com",
-    messagingSenderId: "433095841748",
-    appId: "1:433095841748:web:903e6a8e1620c8e3032841",
-    measurementId: "G-V62DW9324H"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const auth = getAuth(app);
-
 const SignupPage = () => {
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
 
     const navigation = useNavigation();
     const [email, setEmail] = React.useState("");
     const [phone, setPhone] = React.useState("");
     const [password, setPassword] = React.useState("");
+    const [confirmpassword, setConfirmPassword] = React.useState("");
     const [firstName, setFirstName] = React.useState("");
     const [lastName, setLastName] = React.useState("");
 
@@ -130,14 +120,16 @@ const SignupPage = () => {
             </TextInput>
             <TextInput style={[styles.enterYourPassword, styles.enterTypo]}
                 placeholder="Enter Your Password"
+                secureTextEntry={true}
                 value={password}
                 onChangeText={setPassword}
             >
             </TextInput>
             <TextInput style={[styles.confirmYoursPassword, styles.enterTypo]}
                 placeholder="Confirm Yours Password"
-                value={password}
-                onChangeText={setPassword}
+                secureTextEntry={true}
+                value={confirmpassword}
+                onChangeText={setConfirmPassword}
             >
             </TextInput>
             <TouchableOpacity onPress={handleSignup}>
