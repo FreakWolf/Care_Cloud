@@ -13,6 +13,25 @@ const ForgotPassEmail = () => {
     navigation.navigate('ForgotPassMobile');
   };
 
+  const handleSendCode = () => {
+    fetch('http://localhost:5000/sendCode', {
+      method: 'POST',
+      headers: {
+        'Content-Type': "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
+      }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log("Code sent : ", data);
+      })
+      .catch((error) => {
+        console.error('Error', error);
+      });
+  };
+
   const [fontsLoaded] = useFonts({
     robotoRegular: require('../../assets/fonts/Roboto-Regular.ttf'),
     robotoMedium: require('../../assets/fonts/Roboto-Medium.ttf'),
@@ -42,10 +61,12 @@ will send you confirmation code `}</Text>
         placeholder="Enter Your Email Address"
         value={email}
         onChangeText={setEmail} />
-      <View style={[styles.rectangleParent, styles.childLayout]}>
-        <View style={[styles.groupChild, styles.groupChildPosition]} />
-        <Text style={styles.sendCode}>Send code</Text>
-      </View>
+      <TouchableOpacity onPress={handleSendCode}>
+        <View style={[styles.rectangleParent, styles.childLayout]}>
+          <View style={[styles.groupChild, styles.groupChildPosition]} />
+          <Text style={styles.sendCode}>Send code</Text>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 };
