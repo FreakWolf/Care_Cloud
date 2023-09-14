@@ -1,4 +1,4 @@
-﻿## This a project on Android, IOS and Web
+﻿## This a project on Android and IOS 
 
 ## How to setup the project
 
