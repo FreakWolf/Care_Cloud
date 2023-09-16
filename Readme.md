@@ -3,7 +3,7 @@
 ## How to setup the project
 
 open the terminal and give the following command
-`npm install -g expo-cli`
+`yarn install -g expo-cli`
 
 after installing the cli in stall the Expo-Go application from PlayStore/AppStore
 
@@ -12,7 +12,7 @@ after installing the cli in stall the Expo-Go application from PlayStore/AppStor
 go to the directory and run the command
 `yarn install`
 and then
-`npx expo start` or `yarn start`
+`yarn start`
 
 
 ## Below is the links for the Figma Design We'll be working on
